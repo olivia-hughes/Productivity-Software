@@ -3,7 +3,7 @@ package com.example.productivity_app.model;
 --------- Imports ---------
 Enlisting the use of jakarta persistence for its object mapping facility.
 */
-import java.time.LocalDateTime;
+import java.sql.Date;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,10 +20,10 @@ public class Tasks {
     public int user_id;
     public String title;
     public String text;
-    public LocalDateTime due_date;
+    public Date due_date;
     public String priority;
     public String status;
-    public LocalDateTime created_at;
+    public Date created_at;
 
     public Tasks(){}
 
@@ -55,10 +55,10 @@ public class Tasks {
         this.text = text;
     }
 
-    public LocalDateTime getDue_date(){
+    public Date getDue_date(){
         return due_date;
     }
-    public void setDue_date(LocalDateTime due_date){
+    public void setDue_date(Date due_date){
         this.due_date = due_date;
     }
 
@@ -76,10 +76,10 @@ public class Tasks {
         this.status = status;
     }
 
-    public LocalDateTime getCreated_at(){
+    public Date getCreated_at(){
         return created_at;
     }
-    public void setCreated_at(LocalDateTime created_at){
+    public void setCreated_at(Date created_at){
         this.created_at = created_at;
     }
 }

@@ -3,7 +3,7 @@ package com.example.productivity_app.model;
 /*
 --------- Imports ---------
 */
-import java.time.LocalDateTime;
+import java.sql.Date;
 
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
@@ -22,7 +22,7 @@ public class Reminders {
     private int user_id;
     private int task_id;
     private int note_id;
-    private LocalDateTime reminder_time;
+    private Date reminder_time;
     private boolean is_completed;
     
     public Reminders(){}
@@ -55,10 +55,10 @@ public class Reminders {
         this.note_id = note_id;
     }
 
-    public LocalDateTime getReminder_time(){
+    public Date getReminder_time(){
         return reminder_time;
     }
-    public void setReminder_time(LocalDateTime reminder_time){
+    public void setReminder_time(Date reminder_time){
         this.reminder_time = reminder_time;
     }
 

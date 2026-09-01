@@ -5,7 +5,7 @@ package com.example.productivity_app.model;
 */
 import jakarta.persistence.Id;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,9 +21,9 @@ public class Goals {
     private int user_id;
     private String title;
     private String description;
-    private LocalDateTime target_date;
     private String status;
-    private LocalDateTime created_at;
+    private Date target_date;
+    private Date created_at;
     
     public Goals(){}
 
@@ -55,10 +55,10 @@ public class Goals {
         this.description = description;
     }
 
-    public LocalDateTime getTarget_date(){
+    public Date getTarget_date(){
         return target_date;
     }
-    public void setTarget_date(LocalDateTime target_date){
+    public void setTarget_date(Date target_date){
         this.target_date = target_date;
     }
 
@@ -69,10 +69,10 @@ public class Goals {
         this.status = status;
     }
 
-    public LocalDateTime getCreated_at(){
+    public Date getCreated_at(){
         return created_at;
     }
-    public void setCreated_at(LocalDateTime created_at){
+    public void setCreated_at(Date created_at){
         this.created_at = created_at;
     }
 

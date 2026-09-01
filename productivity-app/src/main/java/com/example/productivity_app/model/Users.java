@@ -3,7 +3,7 @@ package com.example.productivity_app.model;
 --------- Imports ---------
 Enlisting the use of jakarta persistence for its object mapping facility.
 */
-import java.time.LocalDateTime;
+import java.sql.Date;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,7 +20,7 @@ public class Users {
     private String username;
     private String email;
     private String password_hash;
-    private LocalDateTime created_at;
+    private Date created_at;
     
     public Users(){}
 
@@ -52,10 +52,10 @@ public class Users {
         this.password_hash = password_hash;
     }
 
-    public LocalDateTime getCreated_at(){
+    public Date getCreated_at(){
         return created_at;
     }
-    public void setCreated_at(LocalDateTime created_at){
+    public void setCreated_at(Date created_at){
         this.created_at = created_at;
     }
 }

@@ -1,6 +1,9 @@
 # Effort Log
 This markdown file acts as an audit trail for me to journal the things I had contributed on certain days, and why I did them (most recent -> earliest).
 
+### 01/09/26
+I have finalised the files found in `productivity-app\src\main\java\com\example\productivity_app\model`, which 'model' the databases. They mirror all of the entities found in each table in productivitydb. The next step will be creating the rest of the repositories for the tables. These repository files will consist of methods that use various SQL requests to achieve specific critera and will provide 'endpoints' connecting the the tables in the database. 
+
 ### 31/08/26
 Today I will be planning clearly what I want parts of the app to do, and attempt to create a starting base for the rest of the work ahead. This will clearly outline everything that I need to do per sector, and how specific things work together. From here, I can start writing the code for the APIs, ready for front-end creation & integration.
 
