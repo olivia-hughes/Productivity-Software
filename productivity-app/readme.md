@@ -36,6 +36,4 @@ In a new terminal, please ensure that you have productivity-app as the source (i
 From this fresh terminal, please run `.\mvnw.cmd spring-boot:run` - this will start our springboot application. 
 If successful, you will see something along the lines of `Started ProductivityAppApplication` in the last line. Please contact me if you find an issue such as `"Communications link failure"`, `"Access denied for user"`, or `"Unknown database 'productivitydb'"`. When our application starts, Hibernate should initialise.
 
-
-
 ## Project-Level Resources

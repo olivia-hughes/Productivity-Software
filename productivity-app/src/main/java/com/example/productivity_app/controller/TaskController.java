@@ -21,14 +21,6 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    /*
-    test case
-    @GetMapping
-    public String test() {
-        return "API is working!";
-    }
-    */ 
-
     // Get all tasks.
     @GetMapping
     public List<Task> getTasks(){
@@ -46,4 +38,12 @@ public class TaskController {
     public void deleteTask(@PathVariable Long id){
         taskService.deleteTask(id);
     }
+
+    /*
+    test case
+    @GetMapping
+    public String test() {
+        return "API is working!";
+    }
+    */ 
 }

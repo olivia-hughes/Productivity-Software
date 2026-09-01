@@ -1,5 +1,9 @@
 # Effort Log
-This markdown file acts as an audit trail for me to journal the things I had contributed on certain days, and why I did them.
+This markdown file acts as an audit trail for me to journal the things I had contributed on certain days, and why I did them (most recent -> earliest).
+
+### 31/08/26
+Today I will be planning clearly what I want parts of the app to do, and attempt to create a starting base for the rest of the work ahead. This will clearly outline everything that I need to do per sector, and how specific things work together. From here, I can start writing the code for the APIs, ready for front-end creation & integration.
+
 
 ### 30/08/26
 I started this project as I wasn't happy with productivity apps on the market, and I wanted to further my own experience. I already gained knowledge in using springboot, maven, and associated libraries during my time working in a team creating a diet-tracking application for the University of Essex, however, I wanted to work on this project independently so I could gain experience in all aspects. 
