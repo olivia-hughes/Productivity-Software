@@ -4,12 +4,10 @@ package com.example.productivity_app.model;
 --------- Imports ---------
 */
 import jakarta.persistence.Id;
-
-//import java.sql.Date;
-import java.time.LocalDate;
-
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+
+import java.time.LocalDate;
 
 /*
 --------- Goals.java ---------

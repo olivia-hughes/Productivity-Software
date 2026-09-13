@@ -1,13 +1,13 @@
 package com.example.productivity_app.repository;
-
+/*
+--------- Imports ---------
+*/
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +19,7 @@ import com.example.productivity_app.model.Goals;
 /*
 --------- GoalRepository.java ---------
 Responsible for the endpoints connecting to the 'goals' table.
+All methods use SQL statements to achieve their purpose. 
 */
 
 @Repository 
@@ -83,7 +84,6 @@ public class GoalRepository {
         return goal;
     }
 
-
     /*
     ---------------------------------------
     Fetching user goals
@@ -93,7 +93,8 @@ public class GoalRepository {
     public List<Goals> getGoalsByUser(int user_id){
         List<Goals> goals = new ArrayList<>();
 
-        /*
+        String sql = "SELECT * FROM goals WHERE user_id = ?";
+        
         try(Connection conn = DBConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)){
 
             stmt.setInt(1, user_id);
@@ -102,14 +103,101 @@ public class GoalRepository {
             while(rs.next()){
                 goals.add(mapGoal(rs));
             }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return goals;
+    }
+
+    /*
+    ---------------------------------------
+    Delete a user goal by its goal_id
+    ---------------------------------------
+    */
+    public boolean deleteGoal(int goal_id){
+        String sql = "DELETE FROM goals WHERE goal_id = ?";
+
+        try(Connection conn = DBConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)){
+
+            stmt.setInt(1, goal_id);
+            return stmt.executeUpdate()>0;
+
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    /*
+    ---------------------------------------
+    Update a goal's status
+    ---------------------------------------
+    */
+    public boolean updateGoalStatus(int goal_id, String status){
+        String sql = "UPDATE goals SET status = ? WHERE goal_id = ?";
+
+        try(Connection conn = DBConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)){
+
+            stmt.setString(1, status);
+            stmt.setInt(2, goal_id);
+
+            return stmt.executeUpdate()>0;
+
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    /*
+    ---------------------------------------
+    Fetch goals by status
+    ---------------------------------------
+    */
+   public List<Goals> getGoalsByStatus(int user_id, String status){
+    String sql = "SELECT * FROM goals WHERE user_id = ? AND goal_status = ?";
+
+    List<Goals> goals = new ArrayList<>();
+
+    try(Connection conn = DBConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)){
+
+        stmt.setInt(1, user_id);
+        stmt.setString(2, status);
+
+        ResultSet rs = stmt.executeQuery();
+        while(rs.next()){
+            goals.add(mapGoal(rs));
+            }
 
         } catch (Exception e){
             e.printStackTrace();
         }
-        */
-        
 
         return goals;
     }
-    
+ 
+    /*
+    ---------------------------------------
+    Updating a goal
+    ---------------------------------------
+    */
+    public boolean updateGoal(Goals req){
+        String sql = "UPDATE goals SET title = ?, description = ?, status = ?, target_date = ? WHERE goal_id = ? AND user_id = ?";
+        // No need to get the created_at date, since this won't change. 
+
+        try(Connection conn = DBConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)){
+
+            stmt.setString(1, req.getTitle());
+            stmt.setString(2, req.getDescription());
+            stmt.setString(3, req.getStatus());
+            stmt.setDate(4, Date.valueOf(req.getTarget_date()));
+            stmt.setInt(5, req.getGoal_id());
+            stmt.setInt(6, req.getUser_id());
+
+            return stmt.executeUpdate() > 0;
+
+        } catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
+
