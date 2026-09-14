@@ -76,6 +76,7 @@ public class GoalRepository {
         goal.setStatus(rs.getString("status"));
         goal.setTarget_date(rs.getDate("target_date").toLocalDate());
 
+        // a new goal won't have a set created time automatically, so this creates one:
         Date ts = rs.getDate("created_at");
         if(ts != null){
             goal.setCreated_at(ts.toLocalDate());
