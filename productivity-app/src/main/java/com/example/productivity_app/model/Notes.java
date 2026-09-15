@@ -3,7 +3,9 @@ package com.example.productivity_app.model;
 /*
 --------- Imports ---------
 */
-import java.sql.Date;
+import java.time.LocalDate;
+
+
 /*
 --------- Notes.java ---------
 Mirroring entities in the 'notes' table.
@@ -13,8 +15,8 @@ public class Notes {
     private int user_id;
     private String title;
     private String content;
-    private Date created_at;
-    private Date updated_at;
+    private LocalDate created_at;
+    private LocalDate updated_at;
 
     public Notes(){}
 
@@ -46,17 +48,17 @@ public class Notes {
         this.content = content;
     }
 
-    public Date getCreated_at(){
+    public LocalDate getCreated_at(){
         return created_at;
     }
-    public void setCreated_at(Date created_at){
+    public void setCreated_at(LocalDate created_at){
         this.created_at = created_at;
     }
 
-    public Date getUpdated_at(){
+    public LocalDate getUpdated_at(){
         return updated_at;
     }
-    public void setUpdated_at(Date updated_at){
+    public void setUpdated_at(LocalDate updated_at){
         this.updated_at = updated_at;
     }
 }

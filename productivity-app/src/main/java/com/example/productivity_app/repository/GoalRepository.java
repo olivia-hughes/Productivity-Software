@@ -24,7 +24,32 @@ All methods use SQL statements to achieve their purpose.
 
 @Repository 
 public class GoalRepository {
-    
+    /*
+    ---------------------------------------
+    Map ResultSet to new Goals 
+    This is responsible for converting database query results into Java objects 
+    using type conversion between database and Java (processing JDBC 'ResultSet' objects).
+    ---------------------------------------
+    */
+    private Goals mapGoal(ResultSet rs) throws SQLException{
+        Goals goal = new Goals();
+
+        goal.setGoal_id(rs.getInt("goal_id"));
+        goal.setUser_id(rs.getInt("user_id"));
+        goal.setTitle(rs.getString("title"));
+        goal.setDescription(rs.getString("description"));
+        goal.setStatus(rs.getString("status"));
+        goal.setTarget_date(rs.getDate("target_date").toLocalDate());
+
+        // a new goal won't have a set created time automatically, so this creates one:
+        Date ts = rs.getDate("created_at");
+        if(ts != null){
+            goal.setCreated_at(ts.toLocalDate());
+        }
+
+        return goal;
+    }
+
     /*
     ---------------------------------------
     Creating a user goal
@@ -61,29 +86,7 @@ public class GoalRepository {
 
     }
 
-    /*
-    ---------------------------------------
-    Map ResultSet to new Goals 
-    ---------------------------------------
-    */
-    private Goals mapGoal(ResultSet rs) throws SQLException{
-        Goals goal = new Goals();
-
-        goal.setGoal_id(rs.getInt("goal_id"));
-        goal.setUser_id(rs.getInt("user_id"));
-        goal.setTitle(rs.getString("title"));
-        goal.setDescription(rs.getString("description"));
-        goal.setStatus(rs.getString("status"));
-        goal.setTarget_date(rs.getDate("target_date").toLocalDate());
-
-        // a new goal won't have a set created time automatically, so this creates one:
-        Date ts = rs.getDate("created_at");
-        if(ts != null){
-            goal.setCreated_at(ts.toLocalDate());
-        }
-
-        return goal;
-    }
+    
 
     /*
     ---------------------------------------
